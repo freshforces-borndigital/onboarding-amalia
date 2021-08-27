@@ -21,3 +21,8 @@ a.relation-btn {
 	padding-left: 20px;
 	padding-right: 20px;
 }
+#video-file {
+	width: 350px;
+	height: 100%;
+}
+

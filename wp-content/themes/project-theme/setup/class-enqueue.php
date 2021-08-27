@@ -168,8 +168,8 @@ class Enqueue {
 				'themeUrl'		=> site_url(),
 				'ajx'			=> array(
 					'startEpisode' => array(
-						'action' => 'start_episode',
-						'nonce'	=> wp_create_nonce('StartEpisode')
+						'action'	=> 'start_episode',
+						'nonce'		=> wp_create_nonce('StartEpisode')
 					),
 					'displayCharacter' => array(
 						'action'	=> 'display_character',
