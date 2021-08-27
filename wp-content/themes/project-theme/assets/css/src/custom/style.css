@@ -1,0 +1,23 @@
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+#intro-video {
+	width: 700px;
+	height: 100%;
+}
+.intro-description{
+	padding: 5px;
+	margin: 10px;
+}
+img.img-thumbnail {
+	width: 200px;
+	height: 200px;
+}
+small.card-text {
+	color: #2F353E;
+}
+a.relation-btn {
+	padding-left: 20px;
+	padding-right: 20px;
+}

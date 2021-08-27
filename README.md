@@ -1,1 +1,1 @@
-# onboarding-amalia
+# WordPress Project Starter
