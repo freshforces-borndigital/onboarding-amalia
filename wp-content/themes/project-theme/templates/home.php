@@ -23,7 +23,7 @@ get_header(); ?>
 						<p><?php echo get_field('homepage_text_intro','option') ?></p>
 					</div>
 					<div class="d-flex justify-content-center">
-						<a href="<?php echo get_site_url().'/episode'?>" class="btn btn-outline-primary border-0">Continue</a>
+						<a href="<?php echo get_site_url().'/sequence-page'?>" class="btn btn-outline-primary border-0">Continue</a>
 					</div>
 				</div>
 			</div>

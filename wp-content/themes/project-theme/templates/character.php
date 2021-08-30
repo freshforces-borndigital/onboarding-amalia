@@ -19,9 +19,9 @@ get_header(); ?>
 				<div class="col-md-2">
 					<div class="card text-center">
 						<div class="card-body">
-							<small class="card-text"><?php echo $character->relation_episode_title ?></small>
-							<h4 class="card-title"><?php echo $character->line_up ?></h4>
-							<h6 class="card-title"><?php echo $character->post_title ?></h6>
+							<small class="card-text" ><?php echo $character->relation_episode_title ?></small>
+							<h4 class="card-title"><?php echo $character->post_title ?></h4>
+							<h6 class="card-title"><?php echo $character->line_up ?></h6>
 							<a href="#" id="relation-btn-<?=$character->follow_up_sequence?>" class="btn btn-primary btn-sm border-0 relation-btn">Choose</a>
 						</div>
 					</div>

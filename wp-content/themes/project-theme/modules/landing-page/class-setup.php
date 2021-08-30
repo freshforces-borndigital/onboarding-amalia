@@ -13,8 +13,8 @@ class Setup {
 	{
 		acf_add_options_page(
 			array(
-				'page_title'  => __( 'Landing page', 'followthemoney' ),
-				'menu_title'  => __( 'Landing page', 'followthemoney' ),
+				'page_title'  => __( 'Landing page', 'onboardingamalia' ),
+				'menu_title'  => __( 'Landing page', 'onboardingamalia' ),
 				'parent_slug' => 'themes.php',
 				'menu_slug'   => 'bd-landing-page',
 				'capability'  => 'manage_options',

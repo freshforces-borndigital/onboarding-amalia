@@ -15,11 +15,11 @@ class Setup {
 	public function register_post_type_episode() {
 		$args = [
 			'labels'            => [
-				'name'          => __('Episodes', 'followthemoney'),
-				'singular_name' => __('Episode', 'followthemoney'),
-				'add_new'       => __('Add New episode', 'followthemoney'),
-				'add_new_item'  => __('Add New episode', 'followthemoney'),
-				'edit_item'     => __('Edit episode', 'followthemoney'),
+				'name'          => __('Episodes', 'onboardingamalia'),
+				'singular_name' => __('Episode', 'onboardingamalia'),
+				'add_new'       => __('Add New episode', 'onboardingamalia'),
+				'add_new_item'  => __('Add New episode', 'onboardingamalia'),
+				'edit_item'     => __('Edit episode', 'onboardingamalia'),
 			],
 			'public'              => false,
 			'publicly_queriable'  => true,
@@ -37,11 +37,11 @@ class Setup {
 	public function register_post_type_character() {
 		$args = [
 			'labels'            => [
-				'name'          => __('Characters', 'followthemoney'),
-				'singular_name' => __('Character', 'followthemoney'),
-				'add_new'       => __('Add New character', 'followthemoney'),
-				'add_new_item'  => __('Add New character', 'followthemoney'),
-				'edit_item'     => __('Edit character', 'followthemoney'),
+				'name'          => __('Characters', 'onboardingamalia'),
+				'singular_name' => __('Character', 'onboardingamalia'),
+				'add_new'       => __('Add New character', 'onboardingamalia'),
+				'add_new_item'  => __('Add New character', 'onboardingamalia'),
+				'edit_item'     => __('Edit character', 'onboardingamalia'),
 			],
 			'public'              => false,
 			'publicly_queriable'  => true,
@@ -59,11 +59,11 @@ class Setup {
     public function register_post_type_sequence() {
         $args = [
 			'labels'            => [
-				'name'          => __('Sequences', 'followthemoney'),
-				'singular_name' => __('Sequence', 'followthemoney'),
-				'add_new'       => __('Add New Sequence', 'followthemoney'),
-				'add_new_item'  => __('Add New Sequence', 'followthemoney'),
-				'edit_item'     => __('Edit Sequence', 'followthemoney'),
+				'name'          => __('Sequences', 'onboardingamalia'),
+				'singular_name' => __('Sequence', 'onboardingamalia'),
+				'add_new'       => __('Add New Sequence', 'onboardingamalia'),
+				'add_new_item'  => __('Add New Sequence', 'onboardingamalia'),
+				'edit_item'     => __('Edit Sequence', 'onboardingamalia'),
 			],
 			'public'              => false,
 			'publicly_queriable'  => true,
@@ -83,8 +83,8 @@ class Setup {
 	{
 		acf_add_options_page(
 			array(
-				'page_title'  => __( 'Sequence', 'followthemoney' ),
-				'menu_title'  => __( 'Sequence', 'followthemoney' ),
+				'page_title'  => __( 'Sequence', 'onboardingamalia' ),
+				'menu_title'  => __( 'Sequence', 'onboardingamalia' ),
 				'parent_slug' => 'themes.php',
 				'menu_slug'   => 'bd-sequence',
 				'capability'  => 'manage_options',

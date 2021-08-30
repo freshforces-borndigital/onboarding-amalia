@@ -35,13 +35,13 @@ class StartEpisode {
 		$post = get_post($this->sequence_id);
 
 		if(!$post) {
-			wp_send_json_error(__('Post not found','followthemoney'));
+			wp_send_json_error(__('Post not found','onboardingamalia'));
 		}
 	}
 
 	private function _response()
 	{
-		$next_sequence = Sequence::get_the_sequence($this->sequence_id);
+		$next_sequence = Sequence::get_sequence($this->sequence_id);
 
 		wp_send_json_success($next_sequence);
 	}

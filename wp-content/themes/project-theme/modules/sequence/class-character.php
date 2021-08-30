@@ -6,7 +6,7 @@ defined ('ABSPATH') || die("Can't access directly");
 
 class Character {
 
-	public static function get_character_data() {
+	public static function get_character_data($episode_id) {
 		$args = array(
 			'post_type'     => 'character',
 			'post_per_page' => -1,
@@ -14,16 +14,19 @@ class Character {
 
 		$characters = get_posts($args);
 
-		foreach ($characters as $character) {
-			$acf = get_fields($character->ID);
+		$charactersNew = [];
 
-			$character->relation_episode_title = $acf['character_relation']->post_title;
-			$character->relation_episode_ID = $acf['character_relation']->ID;
-			$character->line_up = $acf['character_line_up'];
-			$character->follow_up_sequence = $acf['character_follow_up_sequence'];
+		foreach ($characters as $character) {
+			$matched_episode = get_field('character_relation', $character->ID);
+			if($matched_episode == $episode_id) {
+				$acf = get_fields($character->ID);
+				$acf['character_relation_title'] = get_the_title($episode_id);
+
+				$charactersNew[] = array_merge((array) $character, $acf);
+			}
 		}
 
-		return $characters;
+		return $charactersNew;
 	}
 }
 
