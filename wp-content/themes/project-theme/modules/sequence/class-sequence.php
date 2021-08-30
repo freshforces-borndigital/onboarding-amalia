@@ -4,6 +4,8 @@ namespace BD\Sequence;
 
 defined ('ABSPATH') || die("Can't access directly");
 
+use BD\Sequence\Character;
+
 class Sequence {
 
 	public static function get_first_sequence() {
@@ -42,18 +44,18 @@ class Sequence {
 		$sequence->is_first_sequence = get_field('is_first_sequence', $post_id);
 		switch ($acf['acf_fc_layout']) {
 			case 'question' :
+				$sequence->type = $acf['acf_fc_layout'];
 				$sequence->sub_title = $acf['question_sub_title'];
 				$sequence->body_question = $acf['question_body_question'];
 				$sequence->answer = $acf['question_answer'];
 				break;
 			case 'video' :
+				$sequence->type = $acf['acf_fc_layout'];
 				$sequence->video_file = $acf['video_file'];
 				$sequence->follow_up_sequence = $acf['video_follow_up_sequence'];
 				break;
 			case 'page' :
-				$sequence->sub_title = $acf['page_sub_title'];
-				$sequence->follow_up_sequence = $acf['page_follow_up_sequence'];
-				break;
+
 		}
 
 		return (object) $sequence;

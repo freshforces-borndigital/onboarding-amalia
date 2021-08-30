@@ -38,7 +38,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<!-- #page: the closing tag is in header.php -->
+	<!-- #page: the closing tag is in footer.php -->
 	<div id="page">
 	<header id="masthead" class="site-header">
 		

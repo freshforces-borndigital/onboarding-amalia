@@ -18,12 +18,12 @@ get_header(); ?>
 			</div>
 			<br>
 			<div class="row ">
-				<div class="col-md-12">
+				<div class="col-md-12 w-75">
 					<div class="text-center intro-description">
 						<p><?php echo get_field('homepage_text_intro','option') ?></p>
 					</div>
 					<div class="d-flex justify-content-center">
-						<a href="<?php echo get_site_url().'/sequence-page'?>" class="btn btn-outline-primary border-0">Continue</a>
+						<a href="<?php echo get_site_url().'/sequence-page'?>" class="btn btn-primary border-0">Continue</a>
 					</div>
 				</div>
 			</div>

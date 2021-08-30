@@ -18,7 +18,7 @@ get_header(); ?>
 	<main id="main" class="site-main">
 		<div class="row">
 			<?php foreach ($episodes as $key => $episode)  { ?>
-				<div class="col-md-10">
+				<div class="col-md-11">
 					<div class="card mb-3 round">
 						<div class="row no-gutters">
 							<div class="col-md-2">
@@ -29,7 +29,9 @@ get_header(); ?>
 									<small class="card-text"><?php echo $episode->metavalues['episode_sub_title'] ?></small>
 									<h5 class="card-title"><?php echo $episode->post_title ?></h5>
 									<p class="card-text"><?php echo $episode->metavalues['episode_description'] ?></p>
-									<button id="relation-btn-<?=$episode->metavalues['episode_relation']?>" data-id="<?php echo $episode->ID?>" class="btn btn-primary btn-sm border-0 relation-btn">Start</button>
+								</div>
+								<div class="card-footer border-0 bg-transparent">
+									<button id="relation-btn-<?=$episode->metavalues['episode_relation']?>" data-id="<?php echo $episode->ID?>" class="btn btn-primary btn-sm border-0 choose-sequence">Start</button>
 								</div>
 							</div>
 						</div>
@@ -38,21 +40,6 @@ get_header(); ?>
 			<?php } ?>
 		</div>
 	</main>
-</div>
-
-<!--display sequence type-->
-<div id="sequence-type" class="mb-3 mt-2 container">
-	<div class="row">
-		<div class="col-md-4">
-			<button class="btn btn-info border-0 choose-sequence" id="sequence-video">Videos</button>
-		</div>
-		<div class="col-md-4">
-			<button class="btn btn-info border-0 choose-sequence" id="sequence-question">Questions</button>
-		</div>
-		<div class="col-md-4">
-			<button class="btn btn-info border-0 character-btn" id="sequence-page">Pages</button>
-		</div>
-	</div>
 </div>
 
 <!--display sequence question-->
@@ -71,7 +58,7 @@ get_header(); ?>
 <div id="display-sequence-video" class="content-area container">
 	<main id="main" class="site-main">
 		<h4 id="video-title"></h4>
-		<video id="video-file" width="380" controls></video>
+		<video id="video-file" width="650" controls></video>
 		<br>
 		<button class="btn btn-info next-sequence-video border-0" id="next-video">Next</button>
 	</main>
