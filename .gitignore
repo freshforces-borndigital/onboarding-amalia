@@ -117,3 +117,8 @@ wp-content/plugins/index.php
 wp-content/plugins/query-monitor/
 wp-content/themes/**/**languages/
 .editorconfig
+
+
+# Keep track configuration
+!.github
+!sonar-project.properties
