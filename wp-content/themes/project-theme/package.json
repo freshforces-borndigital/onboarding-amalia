@@ -35,8 +35,7 @@
 	"dependencies": {
 		"chart.js-plugin-labels-dv": "^3.3.0",
 		"chartjs-plugin-datalabels": "^2.1.0",
-		"jquery": "^3.6.0",
-		"pusher-js": "^7.4.0"
+		"jquery": "^3.6.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.8.3",
