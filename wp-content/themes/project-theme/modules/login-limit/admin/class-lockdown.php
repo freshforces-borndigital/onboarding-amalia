@@ -83,9 +83,9 @@ class Lockdown {
 			$this->_lock_the_login();
 		}
 
-		$errors = new \WP_Error( 'authentication_failed', __( '<strong>ERROR</strong>: Invalid login credentials.', 'themedomain' ) );
+		$errors = new \WP_Error( 'authentication_failed', __( '<strong>ERROR</strong>: Invalid login credentials.', 'asmlanm' ) );
 		// translators: %d: number.
-		$errors->add( 'remaining_attempts', sprintf( __( '%d attempts remaining', 'themedomain' ), $remaining_attempts ) );
+		$errors->add( 'remaining_attempts', sprintf( __( '%d attempts remaining', 'asmlanm' ), $remaining_attempts ) );
 
 		return $errors;
 
@@ -290,7 +290,7 @@ class Lockdown {
 	 */
 	public static function redirect_to_url( $url, $delay = '0', $exit = '1' ) {
 		if ( empty( $url ) ) {
-			printf( '<br /><strong>%s</strong>', __( 'Error! The URL value is empty. Please specify a correct URL value to redirect to!', 'themedomain' ) );
+			printf( '<br /><strong>%s</strong>', __( 'Error! The URL value is empty. Please specify a correct URL value to redirect to!', 'asmlanm' ) );
 			exit;
 		}
 		if ( ! headers_sent() ) {

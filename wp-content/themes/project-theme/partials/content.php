@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 			the_content( sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'themedomain' ),
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'asmlanm' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -43,7 +43,7 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 			) );
 
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'themedomain' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'asmlanm' ),
 				'after'  => '</div>',
 			) );
 		?>

@@ -1,0 +1,48 @@
+.app {
+    @extend %helpers-absolute-overlay;
+    display: flex;
+    &__page {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
+
+    &__bg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        background-size: cover;
+        background-position: center;
+        transition: $transition-fast;
+
+        &:before {
+            content: '';
+            display: block;
+            @extend %helpers-pseudo-overlay;
+            @include linearGradient(rgba($color-dark-blue, .65), rgba($color-dark-blue, 0), -90);
+            mix-blend-mode: darken;
+            transition: ease-in-out #{$transition-speed}ms #{3.5*$transition-speed}ms; 
+
+            .is-loading & {
+                right: 100%;
+            }
+        }
+
+        .is-team-created & {
+            transform: translate(-50%, -50%) scale(1.1);
+            filter: blur(15px);
+        }
+    }
+
+    &__content {
+        padding: 60px 0;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+}

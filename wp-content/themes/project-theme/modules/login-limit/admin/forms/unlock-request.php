@@ -32,7 +32,7 @@ require ABSPATH . '/wp-load.php';
 
 			$email = trim( $_POST['unlock_request_email'] );
 			if ( empty( $email ) || ! is_email( $email ) ) {
-				$errors .= '<p>' . __( 'Please enter a valid email address', 'themedomain' ) . '</p>';
+				$errors .= '<p>' . __( 'Please enter a valid email address', 'asmlanm' ) . '</p>';
 			}
 
 			if ( $errors ) {
@@ -43,7 +43,7 @@ require ABSPATH . '/wp-load.php';
 				$locked_user = get_user_by( 'email', $email );
 				if ( ! $locked_user ) {
 					// user with this email does not exist in the system.
-					$errors .= '<p>' . __( 'User account not found!', 'themedomain' ) . '</p>';
+					$errors .= '<p>' . __( 'User account not found!', 'asmlanm' ) . '</p>';
 					echo '<div id="login_error">' . $errors . '</div>';
 				} else {
 					// process unlock request.
@@ -58,12 +58,12 @@ require ABSPATH . '/wp-load.php';
 
 					if ( ! $unlock_url ) {
 						// no entry found in lockdown table with this IP range.
-						$error_msg = '<p>' . __( 'Error: No locked entry was found in the DB with your IP address range!', 'themedomain' ) . '</p>';
+						$error_msg = '<p>' . __( 'Error: No locked entry was found in the DB with your IP address range!', 'asmlanm' ) . '</p>';
 						echo '<div id="login_error">' . $error_msg . '</div>';
 					} else {
 						// send an email to the user.
 						notification::send_unlock_request_email( $email, $unlock_url );
-						echo '<p class="message">' . __( 'An email has been sent to you with the unlock instructions.', 'themedomain' ) . '</p>';
+						echo '<p class="message">' . __( 'An email has been sent to you with the unlock instructions.', 'asmlanm' ) . '</p>';
 					}
 				}
 			}
@@ -87,18 +87,18 @@ require ABSPATH . '/wp-load.php';
 function bd_display_unlock_form( $email = '' ) {
 	ob_start();
 	// display the unlock request form.
-	$unlock_form_msg = '<p>' . __( 'You are here because you have been locked out due to too many incorrect login attempts.', 'themedomain' ) . '</p>'
-	. '<p>' . __( 'Please enter your email address and you will receive an email with instructions on how to unlock yourself.', 'themedomain' ) . '</p>';
+	$unlock_form_msg = '<p>' . __( 'You are here because you have been locked out due to too many incorrect login attempts.', 'asmlanm' ) . '</p>'
+	. '<p>' . __( 'Please enter your email address and you will receive an email with instructions on how to unlock yourself.', 'asmlanm' ) . '</p>';
 	?>
 	<div class="message"><?php echo $unlock_form_msg; ?></div>
 	<form name="loginform" id="loginform" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
 		<p>
-			<label for="tf_unlock_request_email"><?php _e( 'Email Address', 'themedomain' ); ?><br>
+			<label for="tf_unlock_request_email"><?php _e( 'Email Address', 'asmlanm' ); ?><br>
 				<input type="text" name="unlock_request_email" id="unlock_request_email" class="input" value="<?php echo $email; ?>" size="20">
 			</label>
 		</p>
 		<p class="submit">
-			<input type="submit" name="wp_submit_unlock_request" id="wp_submit_unlock_request" class="button button-primary button-large" value="<?php esc_attr_e( 'Send Unlock Request', 'themedomain' ); ?>">
+			<input type="submit" name="wp_submit_unlock_request" id="wp_submit_unlock_request" class="button button-primary button-large" value="<?php esc_attr_e( 'Send Unlock Request', 'asmlanm' ); ?>">
 		</p>
 	</form>
 	<?php

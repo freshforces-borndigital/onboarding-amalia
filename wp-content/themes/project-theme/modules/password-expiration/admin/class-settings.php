@@ -32,8 +32,8 @@ final class Settings {
 
 		add_submenu_page(
 			'users.php',
-			esc_html__( 'Password Expiration', 'themedomain' ),
-			esc_html__( 'Password Expiration', 'themedomain' ),
+			esc_html__( 'Password Expiration', 'asmlanm' ),
+			esc_html__( 'Password Expiration', 'asmlanm' ),
 			'manage_options',
 			'bd_expire_passwords',
 			array( $this, 'render_submenu_page' )
@@ -51,7 +51,7 @@ final class Settings {
 		?>
 		<div class="wrap">
 
-			<h2><?php esc_html_e( 'Password Expiration', 'themedomain' ); ?></h2>
+			<h2><?php esc_html_e( 'Password Expiration', 'asmlanm' ); ?></h2>
 
 			<form method="post" action="options.php">
 				<?php
@@ -91,7 +91,7 @@ final class Settings {
 
 		add_settings_field(
 			'passexp_settings_field_is_enabled',
-			esc_html__( 'Enable password expiration feature?', 'themedomain' ),
+			esc_html__( 'Enable password expiration feature?', 'asmlanm' ),
 			array( $this, 'render_field_is_enabled' ),
 			'bd_passexp_settings_page',
 			'bd_passexp_settings_page_section'
@@ -99,7 +99,7 @@ final class Settings {
 
 		add_settings_field(
 			'passexp_settings_field_limit',
-			esc_html__( 'Require password reset every', 'themedomain' ),
+			esc_html__( 'Require password reset every', 'asmlanm' ),
 			array( $this, 'render_field_limit' ),
 			'bd_passexp_settings_page',
 			'bd_passexp_settings_page_section'
@@ -107,7 +107,7 @@ final class Settings {
 
 		add_settings_field(
 			'passexp_settings_field_roles',
-			esc_html__( 'For users in these roles', 'themedomain' ),
+			esc_html__( 'For users in these roles', 'asmlanm' ),
 			array( $this, 'render_field_roles' ),
 			'bd_passexp_settings_page',
 			'bd_passexp_settings_page_section'
@@ -124,7 +124,7 @@ final class Settings {
 
 		printf(
 			'<p>%s</p>',
-			esc_html__( 'Require certain users to change their passwords on a regular basis.', 'themedomain' )
+			esc_html__( 'Require certain users to change their passwords on a regular basis.', 'asmlanm' )
 		);
 
 	}
@@ -143,7 +143,7 @@ final class Settings {
 		printf(
 			'<input type="checkbox" name="bd_passexp_settings[is_enabled]" %s value="1"> %s',
 			esc_attr( $checked ),
-			esc_html__( 'Yes', 'themedomain' )
+			esc_html__( 'Yes', 'asmlanm' )
 		);
 
 	}
@@ -162,7 +162,7 @@ final class Settings {
 			'<input type="number" min="1" max="365" maxlength="3" name="bd_passexp_settings[limit]" placeholder="%s" value="%s"> %s',
 			esc_attr( Setup::$default_limit ),
 			esc_attr( $value ),
-			esc_html__( 'days', 'themedomain' )
+			esc_html__( 'days', 'asmlanm' )
 		);
 
 	}

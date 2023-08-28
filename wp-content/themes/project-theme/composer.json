@@ -1,5 +1,7 @@
 {
     "require": {
-        "tgmpa/tgm-plugin-activation": "^2.6"
+        "tgmpa/tgm-plugin-activation": "^2.6",
+        "phpoffice/phpspreadsheet": "^1.21",
+        "pusher/pusher-php-server": "^7.0"
     }
 }

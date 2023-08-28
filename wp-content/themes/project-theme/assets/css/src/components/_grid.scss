@@ -1,0 +1,72 @@
+.grid {
+    @extend %helpers-absolute-overlay;
+    z-index: 9;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    $grid : #{&};
+    
+    &__container {        
+        width: calc(100% - 60px);
+        max-width: $container-width;
+        position: relative;
+    }
+
+    &__backbone {
+        @extend %helpers-absolute-overlay;
+        display: flex;
+    }
+
+    &__line {
+        position: relative;
+        flex: 0 0 25%;
+        width: 25%;
+        &:after {
+            @extend %helpers-grid-line;  
+            transition: ease-in-out #{$transition-speed}ms #{3*$transition-speed}ms; 
+
+            .is-loading & {
+                height: 0;
+            }
+        }
+
+        &:last-child {
+            width: 1px;
+            flex: 0 0 1px;
+        }
+    }
+
+    &__hr {
+        position: absolute;
+        width: 50vw;
+        height: 100%;    
+        top: 0;
+        left: 50%;
+        padding: 60px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        #{$grid}__line {
+            width: 100%;
+            &:after {
+                width: 100%;
+                left: auto;
+                right: 0;
+                height: 1px !important;            
+                transition: ease-in-out #{$transition-speed}ms #{3.5*$transition-speed}ms; 
+    
+                .is-loading & {
+                    width: 0;
+                }
+            }           
+
+            &:last-child {
+                width: 100%;
+                height: 1px;
+                flex: 0 0 1px;
+            }
+        }
+    }
+}

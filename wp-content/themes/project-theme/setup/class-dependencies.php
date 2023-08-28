@@ -51,11 +51,11 @@ class Dependencies {
 			'is_automatic' => false, // Automatically activate plugins after installation or not.
 			'message'      => '', // Message to output right before the plugins table.
 			'strings'      => array(
-				'page_title'                      => __( 'Install Required Plugins', 'themedomain' ),
-				'menu_title'                      => __( 'Install Plugins', 'themedomain' ),
+				'page_title'                      => __( 'Install Required Plugins', 'asmlanm' ),
+				'menu_title'                      => __( 'Install Plugins', 'asmlanm' ),
 				// translators: %s: plugin name.
-				'installing'                      => __( 'Installing Plugin: %s', 'themedomain' ),
-				'oops'                            => __( 'Something went wrong with the plugin API.', 'themedomain' ),
+				'installing'                      => __( 'Installing Plugin: %s', 'asmlanm' ),
+				'oops'                            => __( 'Something went wrong with the plugin API.', 'asmlanm' ),
 				// translators: %1$s: plugin name(s).
 				'notice_can_install_required'     => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ),
 				// translators: %1$s: plugin name(s).
@@ -74,10 +74,10 @@ class Dependencies {
 				'notice_cannot_update'            => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.' ),
 				'install_link'                    => _n_noop( 'Begin installing plugin', 'Begin installing plugins' ),
 				'activate_link'                   => _n_noop( 'Activate installed plugin', 'Activate installed plugins' ),
-				'return'                          => __( 'Return to Required Plugins Installer', 'themedomain' ),
-				'plugin_activated'                => __( 'Plugin activated successfully.', 'themedomain' ),
+				'return'                          => __( 'Return to Required Plugins Installer', 'asmlanm' ),
+				'plugin_activated'                => __( 'Plugin activated successfully.', 'asmlanm' ),
 				// translators: %1$s: dashboard link.
-				'complete'                        => __( 'All plugins installed and activated successfully. %s', 'themedomain' ),
+				'complete'                        => __( 'All plugins installed and activated successfully. %s', 'asmlanm' ),
 			),
 		);
 

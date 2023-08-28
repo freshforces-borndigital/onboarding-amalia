@@ -28,11 +28,11 @@ class Setup
 
 
 			wp_deregister_script( 'jquery' );
-			wp_enqueue_script(
-				'jquery',
-				$src,
-				array(), '3.5.0', true
-			);
+			// wp_enqueue_script(
+			// 	'jquery',
+			// 	$src,
+			// 	array(), '3.5.0', true
+			// );
 		}
 	}
 

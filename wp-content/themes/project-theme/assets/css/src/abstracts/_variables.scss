@@ -4,10 +4,42 @@
 
 // Colors
 // ----------------------------------------------------------------------------
-$color-primary: #a3c627;
-$color-dark: #123123;
+$color-blue: #10069F;
+$color-light-blue: #00A3E0;
+$color-dark-blue: #04032E;
+$color-teal: #00BFB3;
+$color-green: #43B02A;
+$color-lime: #C4D600;
+$color-yellow: #FDD100;
+$color-orange: #FF5A00;
+$color-pink: #DF1995;
+$color-red: #F00000;
+$color-purple: #8031A7;
+
+$color-grey: #5A5B5E; 
+$color-light-grey: #AEB0B3;
+$color-dark: #000000;
+
+$color-primary: $color-blue;
+$color-secondary: $color-yellow;
 
 // Font Family
 // ----------------------------------------------------------------------------
-$font-family-title: "Open Sans", sans-serif;
-$font-family-body: "Open Sans", sans-serif;
+$font-family-title: "neue-haas-grotesk-display";
+$font-family-body: "neue-haas-grotesk-display";
+
+// Custom Variables
+// ----------------------------------------------------------------------------
+$unit-base: 14px;
+$container-width: 1280px;
+$dot-count: 300; // TO-DO: link dot-count with dotMax variable for dynamic styling
+
+// Transitions
+// ----------------------------------------------------------------------------
+$transition-speed: 400;
+
+$transition-slow: 425ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow-2: 725ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow-3: 925ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-primary: 275ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-fast: 180ms cubic-bezier(0.4, 0, 0.2, 1);

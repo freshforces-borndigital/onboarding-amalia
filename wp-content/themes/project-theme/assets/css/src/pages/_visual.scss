@@ -1,0 +1,520 @@
+@use "sass:math";
+
+.container--visual {
+    max-width: $container-width;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+
+    @media screen and (max-width: 1280px) {
+        max-width: 1080px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        max-width: 900px;
+    }
+}
+
+.visual {
+    .app__content {
+        padding: 0;
+    }
+
+    .iconBox {
+        height: 15px;
+    }
+
+    &__header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 0;
+        z-index: 3;
+        visibility: visible;
+        transition: opacity ease-in-out #{$transition-speed}ms #{4*$transition-speed}ms;
+
+        .content-loaded & {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__legend {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        opacity: 0;
+        visibility: visible;
+        z-index: 3;
+        transition: opacity ease-in-out #{$transition-speed}ms #{4*$transition-speed}ms;
+
+        .content-loaded & {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__selector {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        margin-left: 30px;
+
+        span {
+            color: $color-blue;
+            font-size: 15px;
+            line-height: 22px;
+            margin: 0;
+        }
+
+        .selector {
+            display: flex;
+            border-bottom: 1px solid $color-light-grey;
+            width: 180px;
+
+            &__box {
+                width: 50%;
+                display: flex;
+                padding: 10px 0;
+                border: none;
+                outline: none;
+                background: transparent;
+                cursor: pointer;
+                transition: background ease 200ms;
+
+                &.selected {
+                    border-bottom: 5px solid $color-blue;
+                    cursor: default;
+
+                    .selector__year {
+                        font-size: 24px;
+                        color: $color-blue;
+                    }
+                }
+
+                &:not(.selected):hover {
+                    background: rgba($color-blue, 0.2);
+                }
+            }
+
+            &__year {
+                color: $color-light-grey;
+                font-size: 20px;
+                line-height: 36px;
+                margin: 0;
+                pointer-events: none;
+                transition: font-size ease 200ms, color ease 200ms;
+            }
+
+            &__popup {
+                position: absolute;
+                top: 50%;
+                left: 100%;
+                transform: translateY(-50%);
+                background-color: $color-blue;
+                padding: 12px 20px;
+                opacity: 0;
+                pointer-events: none;
+                animation: levitate_with_vertical_centering 1.2s ease-in-out infinite;
+                transition: opacity 650ms ease;
+
+                span {
+                    font-size: 15px;
+                    font-weight: 300;
+                    line-height: 22px;
+                    color: white;
+                    white-space: nowrap;
+
+                    @media screen and (max-width: 1024px) {
+                        white-space: normal;
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: -8px;
+                    transform: translateY(-50%);
+                    width: 0;
+                    height: 0;
+                    border-top: 10px solid rgba(0, 0, 0, 0);
+                    border-bottom: 10px solid rgba(0, 0, 0, 0);
+                    border-right: 10px solid $color-blue;
+                }
+
+                &.is-visible {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__stats {
+        display: flex;
+        gap: 60px;
+        padding: 30px;
+        margin-right: 30px;
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            
+            &.commuting {
+                .stat--info {
+                    h3 {
+                        color: $color-blue;
+                    }
+                }
+            }
+
+            &.not-on-campus {
+                .stat--info {
+                    h3 {
+                        color: $color-lime;
+                    }
+                }
+            }
+
+            &--icon {
+                svg {
+                    width: 100%;
+                    height: auto;
+                    max-width: 60px;
+                }
+            }
+
+            &--info {
+                display: flex;
+                flex-direction: column;
+
+                p, h3 {
+                    margin: 0;
+                }
+
+                p {
+                    font-size: 15px;
+                    line-height: 22px;
+                }
+
+                h3 {
+                    font-size: 24px;
+                    line-height: 36px;
+                }
+            }
+        }
+    }
+
+
+    &__info {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        visibility: visible;
+        z-index: 2;
+        transition: opacity ease-in-out #{$transition-speed}ms #{4*$transition-speed}ms;
+
+        .content-loaded & {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__dots {
+        position: absolute;
+        top: -50px;
+        left: -75px;
+        width: calc(50% + 150px); // get only width of bracket container
+        height: calc(100% + 100px);
+
+        .dot {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: $color-light-grey;
+            animation: 60s ease both infinite alternate;
+
+            @for $i from 1 through $dot-count {
+                &:nth-of-type(#{$i}) {
+                    top: percentage(math.div(random(100), 100));
+                    left: percentage(math.div(random(100), 100));
+                    animation-name: float-#{$i};
+                }
+
+                $steps: random(15) + 10;
+                @keyframes float-#{$i} {
+                    @for $step from 0 to $steps {
+                        #{math.div($step, $steps) * 100%} {
+                            transform:  translateX(random(100) + px)
+                                        translateY(random(100) + px)
+                                        scale( math.div(random(70), 100) + 0.3);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__brackets {
+        width: 65%;
+        display: flex;
+        justify-content: flex-start;
+        gap: 40px;
+        padding-left: 60px;
+
+        .bracket {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: flex-end;
+            position: relative;
+
+            &__icon {
+                max-width: 75px;
+                max-height: 100%;
+
+                &--container {
+                    margin-top: 20px;
+                    width: 100%;
+                    height: 50px;
+                }
+            }
+
+            &__animation {
+                pointer-events: none;
+                position: absolute;
+                bottom: calc(100% + 2px);
+                left: 50%;
+                transform: translateX(-50%);
+                width: 150px;
+                height: 75px;
+                opacity: 0;
+                z-index: 4;
+                transition: opacity 650ms ease;
+                transition-delay: 1s;
+
+                .particle {
+                    position: absolute;
+                    width: 3px;
+                    height: 3px;
+                    animation: sprinkle-75 3s ease-out infinite;
+                    animation-name: sprinkle-75, fade;
+
+                    @for $i from 0 to 200 {
+                        $t: (1 + .01*random(100))*1s;
+
+                        &:nth-child(#{$i + 1}) {
+                            transform: translate(random(100)*1.5px, random(100)*0.75px);
+                            animation-duration: $t;
+                            animation-delay: -.01*random(100)*$t;
+                        }
+                    }
+                }
+
+                &--reverse {
+                    pointer-events: none;
+                    position: absolute;
+                    top: calc(63% - 2px);
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 75px;
+                    height: 50px;
+                    z-index: 4;
+                    transition: opacity 650ms ease;
+
+                    .particle {
+                        position: absolute;
+                        width: 3px;
+                        height: 3px;
+                        opacity: 0;
+                        animation: sprinkle-reverse-75 3s ease-out infinite;
+                        animation-name: sprinkle-reverse-75, fade-reverse;
+
+                        @for $i from 0 to 200 {
+                            $t: (1 + .01*random(100))*1s;
+
+                            &:nth-child(#{$i + 1}) {
+                                transform: translate(random(100)*0.75px, random(100)*0.5px);
+                                animation-duration: $t;
+                                animation-delay: -.01*random(100)*$t;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &__overflow {
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                z-index: 5;
+                transition: opacity 650ms ease;
+
+                .indicator {
+                    width: 18px;
+                    height: 18px;
+                    position: absolute;
+                    background-color: $color-red;
+                    top: 50%;
+                    left: -18px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transform: translateY(-50%) rotate(45deg);
+                    opacity: 0;
+
+                    span {
+                        font-weight: 700;
+                        color: white;
+                        font-size: 19px;
+                        transform: rotate(-45deg);
+                    }
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: -24px;
+                        left: 4px;
+                        transform: translateY(-50%) rotate(-45deg);
+                        width: 75px;
+                        height: 2px;
+                        background-color: $color-red;
+                    }
+                }
+
+                .warning {
+                    position: absolute;
+                    padding: 12px 20px;
+                    left: -210px;
+                    top: -23px;
+                    width: 170px;
+                    opacity: 0;
+                    pointer-events: none;
+                    transform: translateX(10px);
+                    background-color: $color-red;
+                    transition: opacity 650ms ease, transform 650ms ease;
+                    transition-delay: 650ms, 650ms;
+
+                    span {
+                        color: white;
+                        font-size: 15px;
+                        line-height: 22px;
+                    }
+                }
+            }
+
+            &__bar {
+                position: relative;
+                width: 75px;
+                height: 240px;
+                background: white; // not transparent because we want to block the background dots from being visible
+                border: 1px solid $color-light-grey;
+
+                &--inner {
+                    position: absolute;
+                    border: 6px solid rgba(255, 255, 255, 0.2);
+                    border-top: none;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    max-height: 100%; // no overflow in case percentage goes above 100%
+                    transition: height 1.25s cubic-bezier(0.43, 0.13, 0.23, 0.96);
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: -50vh;
+                    left: 0;
+                    height: 200vh;
+                    width: 1px;
+                    background-color: rgba($color-light-grey, 0.15);
+                }
+            }
+
+            &__number {
+                margin: 0;
+                font-size: 24px;
+
+                &.target {
+                    margin-top: -10px;
+                    font-size: 18px;
+                    font-weight: 300;
+                    color: $color-light-grey;
+                }
+            }
+
+            &.is-overflowing {
+                .bracket__overflow {
+                    opacity: 1;
+
+                    .indicator {
+                        animation: flicker 400ms ease;
+                        opacity: 1;
+                    }
+
+                    .warning {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                .bracket__animation {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    &__description {
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        padding-right: 60px;
+
+        h2, h3, p {
+            margin: 0;
+        }
+
+        h2, h3 {
+            color: $color-blue;
+        }
+
+        h3, p {
+            font-weight: 300;
+        }
+
+        h2 {
+            font-size: 48px;
+        }
+
+        h3 {
+            font-size: 30px;
+            margin-bottom: 26px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 22px;
+        }
+    }
+
+    .curtain {
+        &__offset,
+        &__panel {
+            background-color: $color-primary;
+        }
+    }
+}

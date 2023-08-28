@@ -29,9 +29,9 @@ class Widgets {
 	public function widget_init() {
 		register_sidebar(
 			[
-				'name'          => esc_html__( 'Sidebar', 'themedomain' ),
+				'name'          => esc_html__( 'Sidebar', 'asmlanm' ),
 				'id'            => 'sidebar-1',
-				'description'   => esc_html__( 'Add widgets here.', 'themedomain' ),
+				'description'   => esc_html__( 'Add widgets here.', 'asmlanm' ),
 				'before_widget' => '<section id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</section>',
 				'before_title'  => '<h2 class="widget-title">',

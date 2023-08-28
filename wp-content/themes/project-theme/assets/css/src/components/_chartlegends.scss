@@ -1,0 +1,55 @@
+
+
+.chartLegends {
+    padding: 40px 20px;
+    margin-right: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    background-color: #ffffff;
+    gap: 20px;
+    opacity: 0;
+    visibility: 0;
+    transition: ease-in-out #{$transition-speed}ms #{4*$transition-speed}ms; 
+
+    .content-loaded & {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    &__item {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        white-space: nowrap;
+        line-height: 100%;
+        
+        &--icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            .iconBox {
+                display: flex;
+                width: 15px;
+                height: 20px;
+                flex: 0 0 15px;
+
+                &.target {
+                    border: 1px solid $color-light-grey;
+                }
+
+                &.future {
+                    background-color: $color-light-grey;
+                }
+            }
+
+            img {
+                max-width: 15px;
+                max-height: 20px;
+                object-fit: contain;
+            }
+        }
+    }
+}

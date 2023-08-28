@@ -29,12 +29,22 @@ class Options {
 			return;
 		}
 
-		$option_page = acf_add_options_page(
+		acf_add_options_page(
 			array(
-				'page_title'  => __( 'Theme Settings', 'themedomain' ),
-				'menu_title'  => __( 'Theme Settings', 'themedomain' ),
+				'page_title'  => __( 'Theme Settings', 'asmlanm' ),
+				'menu_title'  => __( 'Theme Settings', 'asmlanm' ),
 				'parent_slug' => 'themes.php',
 				'menu_slug'   => 'theme-settings',
+				'capability'  => 'manage_options',
+			)
+		);
+		
+		acf_add_options_page(
+			array(
+				'page_title'  => __( 'Server Setting', 'asmlanm' ),
+				'menu_title'  => __( 'Server Setting', 'asmlanm' ),
+				'parent_slug' => 'options-general.php',
+				'menu_slug'   => 'bd-server-page',
 				'capability'  => 'manage_options',
 			)
 		);

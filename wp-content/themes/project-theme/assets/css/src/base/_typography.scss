@@ -2,8 +2,10 @@
 // This file contains all the styles for Typography base
 // ----------------------------------------------------------------------------
 
-.body {
+body {
 	font-family: $font-family-body;
+	font-size: $unit-base;
+	line-height: 20px;
 	color: $color-dark;
 }
 
@@ -14,9 +16,14 @@ h4,
 h5,
 h6 {
 	font-family: $font-family-title;
-	font-weight: 700;
+	font-weight: 700; 
+	line-height: 120%;
 }
 
 p {
 	font-weight: normal;
+}
+
+.alignleft {
+	text-align: left !important;
 }
