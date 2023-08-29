@@ -182,7 +182,7 @@ $(document).on("click", ".js-copy-string", function () {
   const string = $this.prev().text();
   const message = $(this).next();
 
-  var $temp = $("<input>");
+  const $temp = $("<input>");
   $("body").append($temp);
   $temp.val(string).select();
   document.execCommand("copy");

@@ -3,7 +3,7 @@ import $ from 'jquery';
 import "../../../../node_modules/chart.js/dist/chart";
 import "../../../../node_modules/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min";
 
-var element = document.getElementById("dashboard");
+const element = document.getElementById("dashboard");
 if (typeof element != "undefined" && element != null) {
   const CFG = window.THEMEOBJ;
 
