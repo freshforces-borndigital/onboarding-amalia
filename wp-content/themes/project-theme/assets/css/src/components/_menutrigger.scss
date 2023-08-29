@@ -1,0 +1,31 @@
+.menuTrigger {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 0;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    background: no-repeat;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba($color-light-blue, .15);
+    }
+    
+    span,
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        width: 24px;
+        height: 3px;
+        background: $color-primary;
+    }
+}

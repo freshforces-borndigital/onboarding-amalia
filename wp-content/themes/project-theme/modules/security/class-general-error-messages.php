@@ -36,7 +36,7 @@ class General_Error_Messages {
 		}
 
 		if ( in_array( 'incorrect_password', $err_codes, true ) || in_array( 'invalid_username', $err_codes, true ) ) {
-			$error = __( '<strong>ERROR</strong>: Invalid username or password.', 'themedomain' );
+			$error = __( '<strong>ERROR</strong>: Invalid username or password.', 'asmlanm' );
 		}
 
 		return $error;

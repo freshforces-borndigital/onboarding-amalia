@@ -1,0 +1,44 @@
+@keyframes levitate_with_vertical_centering {
+    50% {
+        transform: translateY(-50%) translateX(10px);
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 0.5;
+    }
+    66% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes sprinkle-75 {
+    0% {
+        transform: translate(75px, 75px);
+    }
+}
+
+@keyframes sprinkle-reverse-75 {
+    100% {
+        transform: translate(37.5px, 0);
+    }
+}
+
+@keyframes fade {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-reverse {
+    to {
+        opacity: 100%;
+    }
+}

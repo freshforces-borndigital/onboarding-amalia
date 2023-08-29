@@ -69,7 +69,7 @@ final class List_Table {
 	 */
 	public function users_column( $columns ) {
 
-		$columns['bdpass'] = esc_html__( 'Password Reset', 'themedomain' );
+		$columns['bdpass'] = esc_html__( 'Password Reset', 'asmlanm' );
 
 		return $columns;
 
@@ -99,7 +99,7 @@ final class List_Table {
 		}
 
 		// translators: %1$s: time.
-		$time_diff = sprintf( __( '%1$s ago', 'themedomain' ), human_time_diff( $reset, time() ) );
+		$time_diff = sprintf( __( '%1$s ago', 'asmlanm' ), human_time_diff( $reset, time() ) );
 		$class     = Setup::is_expired( $user_id ) ? 'bdpass-is-expired' : 'bdpass-not-expired';
 
 		return sprintf(

@@ -8,25 +8,38 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<main id="landing-page" class="site-main">
-			<div class="row">
-				<div class="col-md-12 d-flex justify-content-center">
-					<video id="intro-video" controls>
-						<source src="<?php echo get_field('homepage_video_intro','option')?>">
-					</video>
-				</div>
-			</div>
-			<br>
-			<div class="row ">
-				<div class="col-md-12">
-					<div class="text-center intro-description">
-						<p><?php echo get_field('homepage_text_intro','option') ?></p>
-					</div>
-					<div class="d-flex justify-content-center">
-						<a href="<?php echo get_site_url().'/sequence-page'?>" class="btn btn-outline-primary border-0">Continue</a>
-					</div>
-				</div>
-			</div>
+		<main id="main" class="site-main">
+
+		<?php
+		if ( have_posts() ) :
+
+			if ( is_home() && ! is_front_page() ) : ?>
+				<header>
+					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+				</header>
+
+			<?php
+			endif;
+
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
+
+				/*
+				 * Include the Post-Format-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
+				get_template_part( 'partials/content', get_post_format() );
+
+			endwhile;
+
+			the_posts_navigation();
+
+		else :
+
+			get_template_part( 'partials/content', 'none' );
+
+		endif; ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

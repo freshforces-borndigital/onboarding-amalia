@@ -1,0 +1,23 @@
+.loadingscreen {
+    @extend %helpers-absolute-overlay;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    top: 100%;
+    visibility: hidden;
+    background: #ffffff;
+    transition: opacity linear 100ms, visibility linear 100ms, transform linear 600ms; 
+
+    .is-loading & {
+        top: 0;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 300ms #{5*$transition-speed}ms,  visibility 300ms #{5*$transition-speed}ms, transform linear 150ms #{5*$transition-speed}ms;
+    }
+    
+    &:before {
+        @extend %helpers-loader-spinner;
+    }
+}

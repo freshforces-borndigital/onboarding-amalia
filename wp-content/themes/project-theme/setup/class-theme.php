@@ -77,9 +77,6 @@ class Theme {
 
 		// actions.
 		add_action( 'init', [ $this, 'on_init' ], 5 );
-		
-		// if hosted in wpengine, flush cache 
-		BD_Helper::cache_flush();
 	}
 
 	/**
@@ -151,7 +148,7 @@ class Theme {
 	 */
 	public function load_theme_textdomain() {
 		// vars.
-		load_theme_textdomain( 'themedomain', THEME_DIR . '/languages' );
+		load_theme_textdomain( 'asmlanm', THEME_DIR . '/languages' );
 	}
 
 

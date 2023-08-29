@@ -40,20 +40,20 @@ class Login_Limit {
 			'db_lockdowns'         => $wpdb->prefix . 'login_limit_lockdowns',
 
 			// emails.
-			'admin_email_subject'  => __( '[{site_url}] Site Lockout Notification', 'asmlexploration' ),
+			'admin_email_subject'  => __( '[{site_url}] Site Lockout Notification', 'asmlanm' ),
 			'admin_email_body'     => __(
 				"A lockdown event has occurred due to too many failed login attempts. \n\n
 				<strong style='color: #ee782e;'>Username:</strong> {username} \n
 				<strong style='color: #ee782e;'>IP Address:</strong> {ip} \n
 				<strong style='color: #ee782e;'>IP Range:</strong> {ip_range}.* \n",
-				'asmlexploration'
+				'asmlanm'
 			),
-			'unlock_email_subject' => __( '[{site_url}] Unlock Request Notification', 'asmlexploration' ),
+			'unlock_email_subject' => __( '[{site_url}] Unlock Request Notification', 'asmlanm' ),
 			'unlock_email_body'    => __(
 				"You have requested for the account with email address {email} to be unlocked. Please click the link below to unlock your account:\n\n
 				<strong style='color: #ee782e;'>Unlock link:</strong> {unlock_link}\n\n
 				After clicking the above link you will be able to login to the WordPress administration panel.",
-				'asmlexploration'
+				'asmlanm'
 			),
 		);
 

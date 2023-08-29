@@ -7,24 +7,31 @@
 
 namespace BD_Theme\Setup;
 
+use BD\Pusher;
+use BD\TravelMethod\TravelMethod;
+use BD\Team\Team;
+use BD\Chart\Chart;
+
 /**
  * Enqueue class to setup assets enqueue
  */
-class Enqueue {
+class Enqueue
+{
 	/**
 	 * Setup the flow
 	 */
-	public function __construct() {
-		add_action( 'admin_init', [ $this, 'editor_enqueue' ] );
+	public function __construct()
+	{
+		add_action("admin_init", [$this, "editor_enqueue"]);
 
-		add_filter( 'style_loader_src', [ $this, 'support_autoversion' ] );
-		add_filter( 'script_loader_src', [ $this, 'support_autoversion' ] );
+		add_filter("style_loader_src", [$this, "support_autoversion"]);
+		add_filter("script_loader_src", [$this, "support_autoversion"]);
 
-		add_action( 'login_enqueue_scripts', [ $this, 'login_enqueue' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue' ] );
+		add_action("login_enqueue_scripts", [$this, "login_enqueue"]);
+		add_action("admin_enqueue_scripts", [$this, "admin_enqueue"]);
 
-		add_action( 'wp_enqueue_scripts', [ $this, 'theme_styles' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'theme_scripts' ] );
+		add_action("wp_enqueue_scripts", [$this, "theme_styles"]);
+		add_action("wp_enqueue_scripts", [$this, "theme_scripts"]);
 	}
 
 	/**
@@ -33,23 +40,24 @@ class Enqueue {
 	 * @param string $src Non-raw url from style/ script enqueue.
 	 * @return string
 	 */
-	public function support_autoversion( $src ) {
-		if ( strpos( $src, 'ver=auto' ) ) {
-			$src = remove_query_arg( 'ver', $src );
+	public function support_autoversion($src)
+	{
+		if (strpos($src, "ver=auto")) {
+			$src = remove_query_arg("ver", $src);
 
-			if ( false === strpos( $src, BASE_URL ) ) {
+			if (false === strpos($src, BASE_URL)) {
 				return $src;
 			}
 
-			$dir = str_replace( BASE_URL, BASE_DIR, $src );
+			$dir = str_replace(BASE_URL, BASE_DIR, $src);
 
-			if ( ! file_exists( $dir ) ) {
-				$last_modifed = '0';
+			if (!file_exists($dir)) {
+				$last_modifed = "0";
 			} else {
-				$last_modifed = date( 'YmdHis', filemtime( $dir ) );
+				$last_modifed = date("YmdHis", filemtime($dir));
 			}
 
-			$src = add_query_arg( 'ver', $last_modifed, $src );
+			$src = add_query_arg("ver", $last_modifed, $src);
 		}
 
 		return $src;
@@ -60,8 +68,9 @@ class Enqueue {
 	 *
 	 * @return void
 	 */
-	public function editor_enqueue() {
-		add_editor_style( 'assets/css/src/wp-editor.min.css' );
+	public function editor_enqueue()
+	{
+		add_editor_style("assets/css/src/wp-editor.min.css");
 	}
 
 	/**
@@ -69,21 +78,11 @@ class Enqueue {
 	 *
 	 * @return void
 	 */
-	public function login_enqueue() {
-		wp_enqueue_style(
-			'style',
-			THEME_URL . '/assets/css/dist/wp-login.min.css',
-			[],
-			'auto'
-		);
+	public function login_enqueue()
+	{
+		wp_enqueue_style("style", THEME_URL . "/assets/css/dist/wp-login.min.css", [], "auto");
 
-		wp_enqueue_script(
-			'loginjs',
-			THEME_URL . '/assets/js/dist/wp-login.min.js',
-			[ 'jquery' ],
-			'auto',
-			true
-		);
+		wp_enqueue_script("loginjs", THEME_URL . "/assets/js/dist/wp-login.min.js", ["jquery"], "auto", true);
 	}
 
 	/**
@@ -91,14 +90,17 @@ class Enqueue {
 	 *
 	 * @return void
 	 */
-	public function admin_enqueue() {
-		wp_enqueue_script(
-			'bd-admin-js',
-			THEME_URL . '/assets/js/dist/wp-admin.min.js',
-			[ 'jquery' ],
-			'auto',
-			true
-		);
+	public function admin_enqueue()
+	{
+		wp_enqueue_script("bd-admin-js", THEME_URL . "/assets/js/dist/wp-admin.min.js", [], "auto", true);
+
+        wp_localize_script("bd-admin-js", "ADMINOBJ", [
+            "ajaxUrl" => admin_url("admin-ajax.php"),
+            "nonce" => wp_create_nonce(BD_SECURE_KEY),
+            "ajx"     => array(
+                "importTravelMix" => "import_travel_mix",
+            ),
+        ]);
 	}
 
 	/**
@@ -106,13 +108,9 @@ class Enqueue {
 	 *
 	 * @return void
 	 */
-	public function theme_styles() {
-		wp_enqueue_style(
-			'style',
-			THEME_URL . '/assets/css/dist/themes.min.css',
-			[],
-			'auto'
-		);
+	public function theme_styles()
+	{
+		wp_enqueue_style("style", THEME_URL . "/assets/css/dist/themes.min.css", [], "auto");
 	}
 
 	/**
@@ -120,68 +118,47 @@ class Enqueue {
 	 *
 	 * @return void
 	 */
-	public function theme_scripts() {
-		wp_enqueue_script(
-			'theme',
-			THEME_URL . '/assets/js/dist/themes.min.js',
-			[ 'jquery' ],
-			'auto',
-			true
-		);
+	public function theme_scripts()
+	{
+		wp_enqueue_script("bd-vendor-js", THEME_URL . "/assets/js/dist/vendors.min.js", [], "auto", true);
 
-		/*enqueue ajax*/
-		wp_enqueue_script(
-			'handle-ajax-js',
-			THEME_URL.'/assets/js/src/themes/sequence/sequence.js',
-			['jquery'],
-			'auto',
-			true
-		);
+		wp_enqueue_script("bd-theme-js", THEME_URL . "/assets/js/dist/themes.min.js", [], "auto", true);
 
 		$error_messages = [
-			'required'    => __( 'This field is required. Please be sure to check.', 'themedomain' ),
-			'email'       => __( 'Your E-mail address appears to be invalid. Please be sure to check.', 'themedomain' ),
-			'number'      => __( 'You can enter only numbers in this field.', 'themedomain' ),
-			'maxLength'   => __( 'Maximum {count} characters allowed!', 'themedomain' ),
-			'minLength'   => __( 'Minimum {count} characters allowed!', 'themedomain' ),
-			'maxChecked'  => __( 'Maximum {count} options allowed. Please be sure to check.', 'themedomain' ),
-			'minChecked'  => __( 'Please select minimum {count} options.', 'themedomain' ),
-			'maxSelected' => __( 'Maximum {count} selection allowed. Please be sure to check.', 'themedomain' ),
-			'minSelected' => __( 'Minimum {count} selection allowed. Please be sure to check.', 'themedomain' ),
-			'notEqual'    => __( 'Fields do not match. Please be sure to check.', 'themedomain' ),
-			'different'   => __( 'Fields cannot be the same as each other', 'themedomain' ),
-			'creditCard'  => __( 'Invalid credit card number. Please be sure to check.', 'themedomain' ),
+			"teamNameEmpty" => __("Team name can't be empty", "asmlanm"),
+			"emailEmpty" => __("Email can't be empty", "asmlanm"),
+			"emailInvalid" => __("Email is not valid", "asmlanm"),
+			"teamCodeEmpty" => __("Team code can't be empty", "asmlanm"),
+			"teamNotFoundByCode" => __("Team with this code is not found", "asmlanm"),
+			"failedSubmitData" => __("Failed to submit the data, please try again", "asmlanm"),
 		];
 
-		wp_localize_script(
-			'theme', 'themeObj', [
-				'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
-				'themeUrl'      => THEME_URL,
-				'errorMessages' => $error_messages,
-			]
-		);
+		$CFG = [
+			"ajaxUrl" => admin_url("admin-ajax.php"),
+			"themeUrl" => THEME_URL,
+			"errorMessages" => $error_messages,
+			"nonce" => wp_create_nonce(BD_SECURE_KEY),
+		];
 
-		/*localize js ajax*/
-		wp_localize_script(
-			'handle-ajax-js','handleAjax', [
-				'ajaxUrl'		=> admin_url('admin-ajax.php'),
-				'themeUrl'		=> site_url(),
-				'ajx'			=> array(
-					'startEpisode' => array(
-						'action'	=> 'start_episode',
-						'nonce'		=> wp_create_nonce('StartEpisode')
-					),
-					'displayCharacter' => array(
-						'action'	=> 'display_character',
-						'nonce'		=> wp_create_nonce('DisplayCharacter')
-					)
-				)
-			]
-		);
+		$team_id_query_var = get_query_var("team_unique_link");
+        $pagename = get_query_var('pagename');
 
+		if(!empty($team_id_query_var) and $pagename === "chart"){
+			$team = Team::get_by_unique_link($team_id_query_var);
 
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
+			$travel_methods = TravelMethod::get_all();
+			$chart = Team::get_chart($team);
+			$global_chart = Chart::global_chart();
+
+			$CFG['travelMethods'] 	= $travel_methods;
+			$CFG['leftChart'] 		= $chart;
+			$CFG['rightChart'] 		= $global_chart;
+		}
+
+		wp_localize_script("bd-theme-js", "THEMEOBJ", $CFG );
+
+		if (is_singular() && comments_open() && get_option("thread_comments")) {
+			wp_enqueue_script("comment-reply");
 		}
 	}
 }

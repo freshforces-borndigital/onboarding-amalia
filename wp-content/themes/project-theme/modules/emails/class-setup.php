@@ -33,8 +33,8 @@ class Setup
 
 		$email_setting_page = acf_add_options_page(
 			array(
-				'page_title'  => __('Email Settings', 'projectstarter'),
-				'menu_title'  => __('Email Settings', 'projectstarter'),
+				'page_title'  => __('Email Settings', 'asmlanm'),
+				'menu_title'  => __('Email Settings', 'asmlanm'),
 				'parent_slug' => 'options-general.php',
 				'menu_slug'   => 'email-settings',
 				'capability'  => 'manage_options',

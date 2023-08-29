@@ -131,10 +131,10 @@ final class Login_Screen {
 			'<p id="login_error">%s</p><p class="message">%s</p>',
 			sprintf(
 				// translators: %d: day.
-				_n( 'Your password must be reset every %d day.', 'Your password must be reset every %d days.', $limit, 'themedomain' ),
+				_n( 'Your password must be reset every %d day.', 'Your password must be reset every %d days.', $limit, 'asmlanm' ),
 				$limit
 			),
-			esc_html__( 'Please enter your username or e-mail below and a password reset link will be sent to you.', 'themedomain' )
+			esc_html__( 'Please enter your username or e-mail below and a password reset link will be sent to you.', 'asmlanm' )
 		);
 
 	}

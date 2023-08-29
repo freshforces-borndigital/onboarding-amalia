@@ -25,6 +25,7 @@ class Disable_XMLRPC {
 	{
 		$file_request = @$_SERVER['PHP_SELF'];
 		if (strpos( $file_request, 'xmlrpc.php' )) {
+            http_response_code(404);
 			wp_die();
 		}
 	}

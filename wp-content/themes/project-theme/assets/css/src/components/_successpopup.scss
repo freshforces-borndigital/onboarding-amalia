@@ -1,0 +1,43 @@
+#successpopup {
+    
+    .popup__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 45px;
+        color: #ffffff;
+        text-align: center;
+        @include linearGradient($color-primary, $color-light-blue, -135);
+        position: relative;
+        gap: 20px;
+    }
+    
+    .popup__inner {
+        width: 100%;
+        max-width: 430px;
+    }
+
+    .success-icon {
+        font-size: 64px;
+    }
+
+    .success-title {
+        margin: 0;
+        font-size: 36px;
+    }
+
+    .entrycontent {
+        opacity: .75;
+    }
+    
+    .note {
+        position: absolute;
+        bottom: 10px;
+        opacity: .75;
+    }
+    
+    .btn {
+        margin-bottom: 45px;
+    }
+}

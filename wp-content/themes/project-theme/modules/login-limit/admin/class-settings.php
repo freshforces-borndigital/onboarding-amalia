@@ -35,8 +35,8 @@ final class Settings {
 
 		add_submenu_page(
 			'users.php',
-			__( 'Login Limit', 'themedomain' ),
-			__( 'Login Limit', 'themedomain' ),
+			__( 'Login Limit', 'asmlanm' ),
+			__( 'Login Limit', 'asmlanm' ),
 			'manage_options',
 			'login-limit-settings',
 			[ $this, 'render_submenu_page' ]
@@ -56,14 +56,14 @@ final class Settings {
 		?>
 		<div class="wrap login-limit-settings">
 
-			<h2><?php esc_html_e( 'Login Limit', 'themedomain' ); ?></h2>
+			<h2><?php esc_html_e( 'Login Limit', 'asmlanm' ); ?></h2>
 			<?php settings_errors(); ?>
 			<?php $active_tab = ( isset( $_GET['tab'] ) ) ? sanitize_text_field( $_GET['tab'] ) : 'settings'; ?>
 
 			<h2 class="nav-tab-wrapper">
-				<a href="<?php echo add_query_arg( 'tab', 'settings' ); ?>" class="nav-tab <?php echo 'settings' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php _e( 'Settings', 'themedomain' ); ?></a>
-				<a href="<?php echo add_query_arg( 'tab', 'admin-email' ); ?>" class="nav-tab <?php echo 'admin-email' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php _e( 'Admin Notification', 'themedomain' ); ?></a>
-				<a href="<?php echo add_query_arg( 'tab', 'unlock-email' ); ?>" class="nav-tab <?php echo 'unlock-email' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php _e( 'Email Unlock Request', 'themedomain' ); ?></a>
+				<a href="<?php echo add_query_arg( 'tab', 'settings' ); ?>" class="nav-tab <?php echo 'settings' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php _e( 'Settings', 'asmlanm' ); ?></a>
+				<a href="<?php echo add_query_arg( 'tab', 'admin-email' ); ?>" class="nav-tab <?php echo 'admin-email' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php _e( 'Admin Notification', 'asmlanm' ); ?></a>
+				<a href="<?php echo add_query_arg( 'tab', 'unlock-email' ); ?>" class="nav-tab <?php echo 'unlock-email' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php _e( 'Email Unlock Request', 'asmlanm' ); ?></a>
 			</h2>
 
 			<form method="post" action="options.php">
@@ -117,7 +117,7 @@ final class Settings {
 
 		add_settings_field(
 			'login_limit_settings_field_enable',
-			esc_html__( 'Enable Plugin', 'themedomain' ),
+			esc_html__( 'Enable Plugin', 'asmlanm' ),
 			[ $this, 'render_field_enable' ],
 			'login_limit_settings_page',
 			'login_limit_settings_page_section'
@@ -125,7 +125,7 @@ final class Settings {
 
 		add_settings_field(
 			'login_limit_settings_field_max_login_attempts',
-			esc_html__( 'Max login attempts', 'themedomain' ),
+			esc_html__( 'Max login attempts', 'asmlanm' ),
 			[ $this, 'render_field_max_login_attempts' ],
 			'login_limit_settings_page',
 			'login_limit_settings_page_section'
@@ -133,7 +133,7 @@ final class Settings {
 
 		add_settings_field(
 			'login_limit_settings_field_retry_time_period',
-			esc_html__( 'Retry max period', 'themedomain' ),
+			esc_html__( 'Retry max period', 'asmlanm' ),
 			[ $this, 'render_field_retry_time_period' ],
 			'login_limit_settings_page',
 			'login_limit_settings_page_section'
@@ -141,7 +141,7 @@ final class Settings {
 
 		add_settings_field(
 			'login_limit_settings_field_lockout_time_length',
-			esc_html__( 'Lockout time length', 'themedomain' ),
+			esc_html__( 'Lockout time length', 'asmlanm' ),
 			[ $this, 'render_field_lockout_time_length' ],
 			'login_limit_settings_page',
 			'login_limit_settings_page_section'
@@ -154,14 +154,14 @@ final class Settings {
 
 		add_settings_section(
 			'login_limit_admin_email_page_section',
-			esc_html__( 'Admin Email', 'themedomain' ),
+			esc_html__( 'Admin Email', 'asmlanm' ),
 			false,
 			'login_limit_admin_email_page'
 		);
 
 		add_settings_field(
 			'login_limit_settings_field_admin_email_subject',
-			esc_html__( 'Subject', 'themedomain' ),
+			esc_html__( 'Subject', 'asmlanm' ),
 			[ $this, 'render_field_admin_email_subject' ],
 			'login_limit_admin_email_page',
 			'login_limit_admin_email_page_section'
@@ -169,7 +169,7 @@ final class Settings {
 
 		add_settings_field(
 			'login_limit_settings_field_admin_email_body',
-			esc_html__( 'Body', 'themedomain' ),
+			esc_html__( 'Body', 'asmlanm' ),
 			[ $this, 'render_field_admin_email_body' ],
 			'login_limit_admin_email_page',
 			'login_limit_admin_email_page_section'
@@ -182,14 +182,14 @@ final class Settings {
 
 		add_settings_section(
 			'login_limit_unlock_email_page_section',
-			esc_html__( 'Unlock Request Emails', 'themedomain' ),
+			esc_html__( 'Unlock Request Emails', 'asmlanm' ),
 			false,
 			'login_limit_unlock_email_page'
 		);
 
 		add_settings_field(
 			'login_limit_settings_field_unlock_email_subject',
-			esc_html__( 'Subject', 'themedomain' ),
+			esc_html__( 'Subject', 'asmlanm' ),
 			[ $this, 'render_field_unlock_email_subject' ],
 			'login_limit_unlock_email_page',
 			'login_limit_unlock_email_page_section'
@@ -197,7 +197,7 @@ final class Settings {
 
 		add_settings_field(
 			'login_limit_settings_field_unlock_email_body',
-			esc_html__( 'Body', 'themedomain' ),
+			esc_html__( 'Body', 'asmlanm' ),
 			[ $this, 'render_field_unlock_email_body' ],
 			'login_limit_unlock_email_page',
 			'login_limit_unlock_email_page_section'
@@ -347,7 +347,7 @@ final class Settings {
 		printf(
 			'<input name="login_limit_settings[retry_time_period]" type="number" step="1" min="10" id="retry_time_period" value="%d" class="small-text"> %s',
 			esc_attr( $value ),
-			esc_html__( 'minutes', 'themedomain' ) . '<br><small>' . esc_html__( "If user's login trial time is longer than this value, the counting will be reset" ) . '</small>'
+			esc_html__( 'minutes', 'asmlanm' ) . '<br><small>' . esc_html__( "If user's login trial time is longer than this value, the counting will be reset" ) . '</small>'
 		);
 	}
 
@@ -366,7 +366,7 @@ final class Settings {
 		printf(
 			'<input name="login_limit_settings[lockout_time_length]" type="number" step="1" min="10" id="lockout_time_length" value="%d" class="small-text"> %s',
 			esc_attr( $value ),
-			esc_html__( 'minutes', 'themedomain' ) . '<br><small>' . esc_html__( 'How long users would be locked out?', 'themedomain' ) . '</small>'
+			esc_html__( 'minutes', 'asmlanm' ) . '<br><small>' . esc_html__( 'How long users would be locked out?', 'asmlanm' ) . '</small>'
 		);
 	}
 

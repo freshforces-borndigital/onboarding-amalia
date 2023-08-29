@@ -30,6 +30,7 @@ class Supports {
 	public function add_supports() {
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
+		add_theme_support( 'block-templates' );
 
 		/**
 		 * Let WordPress manage the document title.
@@ -66,9 +67,9 @@ class Supports {
 		// register menu locations.
 		register_nav_menus(
 			[
-				'landing_page__bottom' => esc_html__( 'Landing page: bottom', 'themedomain' ),
-				'loggedin_page__top'   => esc_html__( 'Logged-in page: top', 'themedomain' ),
-				'loggedin_page__side'  => esc_html__( 'Logged-in page: side', 'themedomain' ),
+				'landing_page__bottom' => esc_html__( 'Landing page: bottom', 'asmlanm' ),
+				'loggedin_page__top'   => esc_html__( 'Logged-in page: top', 'asmlanm' ),
+				'loggedin_page__side'  => esc_html__( 'Logged-in page: side', 'asmlanm' ),
 			]
 		);
 

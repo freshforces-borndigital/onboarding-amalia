@@ -1,3 +1,117 @@
-//.btn {
-//    background-color: $color-primary;
-//}
+%disabled-style {
+    background-color: $color-light-grey;
+    color: rgba($color-grey, .5);
+    border:solid 2px $color-light-grey;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.btn {
+    background-color: $color-primary;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px 24px;
+    justify-content: center;
+    outline: none;
+    transition: $transition-fast;
+    position: relative;
+
+    &> span,
+    &> .icon {
+        opacity: 1;
+        transition: opacity $transition-fast;
+    }
+
+    &:after {        
+        opacity: 0;
+        transition: $transition-fast;
+        @extend %helpers-loader-spinner;
+        @extend %helpers-absolute-center;
+        border-color: #ffffff #ffffff #ffffff rgba(#ffffff, .3);
+    }
+
+    &.btn--primary {
+        border: none;
+        &.btn--c-blue {
+            background-color: $color-blue;
+            color: #ffffff;            
+
+            &:disabled {
+                @extend %disabled-style;
+            }
+
+            &:hover:not(:disabled) {
+                background-color: darken($color-blue, 10%);
+            }
+        }
+        &.btn--c-pink {
+            background-color: $color-pink;
+            color: #ffffff;
+            
+
+            &:disabled {
+                @extend %disabled-style;
+            }
+
+            &:hover:not(:disabled) {
+                border-color: #ffffff;
+                background-color: darken($color-pink, 10%);
+            }
+        }
+    }
+
+    &.btn--secondary {
+        background-color: transparent;
+        border: solid 2px;
+
+        &.btn--c-white {
+            color: #ffffff;
+
+            &:disabled {
+                pointer-events: none;
+                opacity: .4;
+            }
+
+
+            &:hover:not(:disabled) {
+                background-color: #ffffff;
+                border-color: #ffffff;
+                color: $color-primary;
+            }
+        }
+ 
+        &.btn--c-blue {
+            &:disabled {
+                @extend %disabled-style;
+            }
+        }
+
+        &.btn--c-pink {
+            &:disabled {
+                @extend %disabled-style;
+            }
+        }
+    }
+    
+ 
+    &.btn--icon-after {
+        flex-direction: row-reverse;
+    }
+
+    &.is-loading {
+        &> span,
+        &> .icon {
+            opacity: 0;
+        }
+
+        &:after {
+            opacity: 1;
+        }
+
+    }
+}

@@ -21,11 +21,11 @@ class ResetPassword
 		$errors = new \WP_Error();
 
 		if (empty($_POST['user_login'])) {
-			$errors->add('empty_username', __('<strong>ERROR</strong>: Enter a username or email address.', 'asmlinteractive'));
+			$errors->add('empty_username', __('<strong>ERROR</strong>: Enter a username or email address.', 'asmlanm'));
 		} elseif (strpos($_POST['user_login'], '@')) {
 			$user_data = get_user_by('email', trim(wp_unslash($_POST['user_login'])));
 			if (empty($user_data))
-				$errors->add('invalid_email', __('<strong>ERROR</strong>: There is no user registered with that email address.', 'asmlinteractive'));
+				$errors->add('invalid_email', __('<strong>ERROR</strong>: There is no user registered with that email address.', 'asmlanm'));
 		} else {
 			$login = trim($_POST['user_login']);
 			$user_data = get_user_by('login', $login);
@@ -37,7 +37,7 @@ class ResetPassword
 			return $errors;
 
 		if (!$user_data) {
-			$errors->add('invalidcombo', __('<strong>ERROR</strong>: Invalid username or email.', 'asmlinteractive'));
+			$errors->add('invalidcombo', __('<strong>ERROR</strong>: Invalid username or email.', 'asmlanm'));
 			return $errors;
 		}
 

@@ -38,6 +38,14 @@ class Setup {
 		global $wp;
 
 		// write your restriction rule here.
+        $pagename = get_query_var('pagename');
+
+		$login = home_url('/login');
+
+        if ($pagename == 'datavisualisation') {
+            $msg = sprintf( __("Sorry, you can't access this page. Please login <a href='%s'>here</a>", "asmlanm"), $login);
+            wp_die($msg);
+        }
 	}
 
 	/**

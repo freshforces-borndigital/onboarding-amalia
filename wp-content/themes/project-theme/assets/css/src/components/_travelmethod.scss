@@ -1,0 +1,161 @@
+.travelMethod {
+    position: relative;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    transition: $transition-fast;
+    $method: #{&};
+    cursor: pointer;
+    &--label {
+        display: flex;
+        padding: 6px;
+        gap: 5px;
+        background-color: rgba($color-primary, 0);
+        border: solid 1px #EAEAEB;
+        transition: $transition-fast;
+        box-shadow: 0 0 0 0 rgba($color-primary, 0);
+        position: relative;
+
+    }
+    
+    &--icon {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto 0;
+        transition: $transition-fast;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+
+        .icon-image {
+            width: 60%;
+            max-width: 24px;
+            opacity: 1;
+
+            &.selected-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+            }
+        }
+    }
+    
+    &--text {
+        flex: 1;
+        line-height: 16px;
+        align-items: center;
+        display: flex;
+        transition: $transition-fast;
+        position: relative;
+        z-index: 1;
+    }
+    
+    &--selected {
+        display: flex;
+        width: 20px;
+        height: 20px;
+        margin: auto 0;
+        opacity: 0;
+        position: relative;
+        z-index: 1;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &--bg {
+            position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        opacity: 0;
+    }
+
+    & > input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        margin: 0;
+        cursor: pointer;
+        z-index: 2;
+
+        &:checked {
+            & + #{$method}--label {
+
+                #{$method}--text {
+                    color: #ffffff;
+                }
+                #{$method}--selected {
+                    opacity: 1;
+                    color: #ffffff;
+                }
+
+                #{$method}--bg {
+                    opacity: 1;
+                }
+
+                #{$method}--icon {
+                    .icon-image {
+                        opacity: 0;
+
+                        &.selected-icon {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:active {
+            & + #{$method}--label {
+                background-color: rgba($color-primary, .2);
+                box-shadow: 0 0 0 3px rgba($color-light-blue, .2);
+                border-color: $color-light-blue;
+            }
+        }
+
+        &.inactive {
+            & + #{$method}--label {
+                background-color: #E4E4E4;
+
+                #{$method}--icon,
+                #{$method}--text {
+                    color: $color-light-grey;
+                }
+
+                #{$method}--icon {
+                    opacity: .5;
+                }
+            }
+        }
+    }
+
+    
+
+    &:hover {
+        background-color: rgba($color-light-blue, .05);
+
+        & > input[type="radio"]:not(:checked) {
+            & + #{$method}--label {
+                background-color: transparent;
+
+                #{$method}--icon {
+                    color: $color-primary
+                }
+                #{$method}--text {
+                    color: $color-dark;
+                }
+            }
+            
+        }
+    }
+    
+}

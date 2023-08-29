@@ -1,7 +1,11 @@
 // -----------------------------------------------------------------------------
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
-
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 html {
 	font-family: sans-serif;
 	-webkit-text-size-adjust: 100%;
@@ -10,6 +14,26 @@ html {
 
 body {
 	margin: 0;
+}
+
+html,
+body {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.site {
+	@extend %helpers-absolute-overlay;
+	overflow: hidden;
+}
+
+.container {
+	width: calc(100% - 60px);
+	max-width: $container-width;
+	margin: 0 auto;
+	position: relative;
 }
 
 article,
@@ -211,4 +235,13 @@ table {
 td,
 th {
 	padding: 0;
+}
+
+@keyframes spin {
+	from {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
 }
