@@ -78,7 +78,7 @@ class Team
 		$chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ012345689";
 		$team_code = "";
 		for ($i = 0; $i < 6; $i++) {
-			$pos = mt_rand(0, strlen($chars) - 1);
+			$pos = random_int(0, strlen($chars) - 1);
 			$team_code .= substr($chars, $pos, 1);
 		}
 
@@ -96,7 +96,7 @@ class Team
 		$chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ012345689";
 		$team_code = "";
 		for ($i = 0; $i < 12; $i++) {
-			$pos = mt_rand(0, strlen($chars) - 1);
+			$pos = random_int(0, strlen($chars) - 1);
 			$team_code .= substr($chars, $pos, 1);
 		}
 
